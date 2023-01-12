@@ -1,0 +1,75 @@
+.codepen-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9DCD6;
+    height: 100vh;
+  }
+  
+  .book {
+    height: 15rem;
+    width: 15rem;
+    font-size: 1.4rem;
+    box-shadow: 1rem 2rem 3rem rgba(#000, .25);
+    text-align: center;
+    position: relative;
+    color: #484e4a;
+  }
+   
+    .page {
+      width: 100%;
+      height: 15rem;
+      perspective: 1500px;
+      
+      &__1 { // Front of first page
+        background-color: #0D5C63;
+        color: #fff;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; // Allows to add padding and margin to rear pseudo element
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        transition: all 1s .3s ;
+        transform-origin: 0 50%;
+        z-index: 2;
+        
+        &::after { // Back of first page
+          content: "Neat, huh?";
+          color: #eff0eb;
+          position: absolute;
+          padding-top: 1.5rem;
+          top: 0;
+          left: 0;
+          background-color: #424B54;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          opacity: 0;
+          transform: rotateY(180deg);
+          transition: all .3s .5s;
+        }
+      }
+      
+      &__2 { // Front of second page
+        background-color: #BAA898;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 1;
+      }
+      
+      &:hover &__1 {
+        transform: rotateY(-180deg);
+        box-shadow: 1.5rem 2rem 3rem rgba(#000, .25);
+        
+        &::after { // Back of first page hover
+          opacity: 1;
+        }
+        
+      }
+    
+  }
